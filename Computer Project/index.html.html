@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discaya's Hearing | Government Politics Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: #1a252f;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+            background: rgba(243, 156, 18, 0.1);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(rgba(26, 37, 47, 0.8), rgba(26, 37, 47, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><polygon fill="%23ffffff" fill-opacity="0.1" points="0,100 50,120 100,100 150,130 200,110 250,140 300,120 350,150 400,130 450,160 500,140 550,170 600,150 650,180 700,160 750,190 800,170 850,200 900,180 950,210 1000,190 1000,300 0,300"/></svg>') center/cover;
+            padding: 120px 0 80px;
+            color: black;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+            background: white;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1a252f;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: #f39c12;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #f39c12;
+            margin-bottom: 40px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 30px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .profile-info h3 {
+            font-size: 1.8rem;
+            color: #1a252f;
+            margin-bottom: 10px;
+        }
+
+        .profile-info p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        /* Key Issues Grid */
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .issue-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            border-left: 5px solid #e74c3c;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .issue-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .issue-card h4 {
+            color: #e74c3c;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .issue-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 50px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #f39c12;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-date {
+            background: #1a252f;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #f39c12;
+            border-radius: 50%;
+            top: 20px;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -60px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -60px;
+        }
+
+        /* Statistics */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #e74c3c;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile-First Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header {
+                padding: 100px 0 60px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+                line-height: 1.2;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .profile-image {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            
+            section {
+                padding: 50px 0;
+                margin: 20px 0;
+            }
+            
+            .issues-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 25px 15px;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 50px);
+                left: 40px !important;
+                margin: 20px 0;
+            }
+            
+            .timeline-item::before {
+                left: -30px !important;
+            }
+            
+            .timeline-content {
+                padding: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                gap: 5px;
+                padding: 0 10px;
+            }
+            
+            nav a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .issue-card, .profile-card {
+                padding: 25px;
+            }
+            
+            .highlight-box {
+                padding: 25px;
+                margin: 20px 0;
+            }
+            
+            .highlight-box h4 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Extra small phones */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+            
+            nav a {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 40px);
+                left: 30px !important;
+            }
+            
+            .timeline-item::before {
+                left: -25px !important;
+            }
+        }
+
+        .highlight-box {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(238, 90, 82, 0.3);
+        }
+
+        .highlight-box h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#issues">Controversial Issues</a></li>
+            <li><a href="#background">Background Check</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="header">
+        <div class="container">
+            <h1>DISCAYA'S HEARING</h1>
+            <p>A Comprehensive Analysis of Government Politics, Accountability, and the Recent Senate Investigation into Flood Control Corruption</p>
+            <div class="badge">GRADE 10 - ARISTOTLE | RHIAN MARIE FAJARDO</div>
+        </div>
+    </section>
+
+    <section id="profile">
+        <div class="container">
+            <h2 class="section-title">Profile Overview</h2>
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-image">SD</div>
+                    <div class="profile-info">
+                        <h3>Cezarah Rowena "Sarah" Cruz Discaya</h3>
+                        <p>Filipino Businesswoman & Politician | Major Government Contractor</p>
+                    </div>
+                </div>
+                <p><strong>Background:</strong> Sarah Discaya is associated with construction firms "Alpha & Omega Construction" and "St. Gerrard Construction Corporation," which were labeled among the top contractors for various flood control projects during the Rodrigo Duterte and Bongbong Marcos administrations.</p>
+                <p><strong>Known For:</strong> Being a businesswoman and major government contractor whose companies have handled hundreds of flood control and infrastructure projects across the Philippines.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">491</span>
+                        <span class="stat-label">Flood Control Projects Bid (2022)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">71</span>
+                        <span class="stat-label">Projects Won</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">9</span>
+                        <span class="stat-label">Family Construction Firms</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">$1.75B</span>
+                        <span class="stat-label">Worth of Projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="issues">
+        <div class="container">
+            <h2 class="section-title">Controversial Issues & Senate Hearings</h2>
+            
+            <div class="highlight-box">
+                <h4>September 1, 2025 Senate Hearing</h4>
+                <p>The controversy culminated in a major Senate hearing where Sarah Discaya was grilled about alleged ghost projects and her family's nine companies.</p>
+            </div>
+
+            <div class="issues-grid">
+                <div class="issue-card">
+                    <h4>Ghost Projects Allegations</h4>
+                    <p>Sarah Discaya faced intense questioning about alleged ghost projects - flood control infrastructure that was supposedly built but may not exist or function properly. She denied involvement in any ghost projects during Senate testimony.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>Bid Rigging Concerns</h4>
+                    <p>Discaya admitted that her nine construction firms simultaneously participated in bidding for the same government flood control projects, raising questions about fair competition and potential bid manipulation.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>Kickback Allegations</h4>
+                    <p>During Senate hearings, Discaya accused several lawmakers and engineers of receiving kickbacks in exchange for public infrastructure contracts, claiming cooperation with public officials was necessary to gain projects.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>Political Connections</h4>
+                    <p>The couple named at least 17 House representatives and other officials in their explosive testimony, claiming they often name-dropped Speaker Martin Romualdez and other prominent politicians.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>Company Delisting</h4>
+                    <p>Following the controversy, Discaya firms were delisted from PhilGEPS (Philippine Government Electronic Procurement System), effectively barring them from future government contracts.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>Contempt Charges</h4>
+                    <p>Curlee Discaya, Sarah's husband, was held in contempt for allegedly lying about Sarah's health during a Senate hearing when she failed to appear, claiming she was ill.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="background">
+        <div class="container">
+            <h2 class="section-title">Background Check & Analysis</h2>
+            
+            <div class="profile-card">
+                <h3>Business Empire Overview</h3>
+                <p>Sarah and Curlee Discaya built a construction empire through multiple companies that dominated Philippines flood control projects. Their companies were among 15 firms that secured US$1.75 billion worth of government flood control projects, earning them the informal title of "King and Queen of Flood Control."</p>
+                
+                <h4 style="margin-top: 30px; color: #1a252f;">Key Companies:</h4>
+                <ul style="margin: 20px 0; padding-left: 30px; line-height: 2;">
+                    <li><strong>Alpha & Omega Construction</strong> - Primary construction firm</li>
+                    <li><strong>St. Gerrard Construction Corporation</strong> - Major flood control contractor</li>
+                    <li><strong>Seven other family firms</strong> - Various construction companies</li>
+                </ul>
+
+                <h4 style="margin-top: 30px; color: #1a252f;">Political Involvement:</h4>
+                <p>Beyond business, Sarah Discaya entered politics, allegedly being "provoked" by incumbent Pasig mayor Vico Sotto to run for mayor. She claimed her family faced defamation since Sotto became mayor in 2019 and that he hindered her business operations.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Current Status</h4>
+                <p>As of September 2025, the Discaya case represents one of the most significant corruption investigations in recent Philippine political history, highlighting issues of government accountability and transparency in public infrastructure projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline">
+        <div class="container">
+            <h2 class="section-title">Timeline of Events</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2016-2022</div>
+                        <h4>Project Accumulation</h4>
+                        <p>Discaya companies become major contractors during Duterte and Marcos administrations, handling hundreds of flood control projects worth billions.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <h4>Peak Year</h4>
+                        <p>Alpha & Omega alone bids on 491 flood control projects, winning 71 of them, raising questions about market dominance.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 1, 2025</div>
+                        <h4>Major Senate Hearing</h4>
+                        <p>Senate Blue Ribbon Committee grills Sarah Discaya about ghost projects and family firm operations in a highly publicized hearing.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 8, 2025</div>
+                        <h4>Explosive Testimony</h4>
+                        <p>Discayas provide witness testimony linking politicians and engineers to kickback schemes, naming 17 House representatives.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 18, 2025</div>
+                        <h4>Contempt Charges</h4>
+                        <p>Curlee Discaya held in contempt for lying about Sarah's health when she failed to appear at Senate hearing.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 2025</div>
+                        <h4>Government Action</h4>
+                        <p>Department of Budget and Management delists Discaya firms from PhilGEPS, barring them from future government contracts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="significance">
+        <div class="container">
+            <h2 class="section-title">Significance & Learning Points</h2>
+            
+            <div class="issues-grid">
+                <div class="issue-card">
+                    <h4>💡 Political Awareness</h4>
+                    <p>This case shows how politics can directly affect communities through infrastructure projects and highlights the importance of government transparency.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>🏛️ Civic Responsibility</h4>
+                    <p>Understanding cases like this helps citizens recognize their role in holding public officials accountable and demanding transparency in government contracts.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>📚 Educational Value</h4>
+                    <p>Learning about our country's political and economic background helps us understand current issues and avoid repeating past mistakes.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>🔍 Critical Thinking</h4>
+                    <p>This case demonstrates the importance of questioning government processes and the need for strong institutions to prevent corruption.</p>
+                </div>
+            </div>
+
+            <div class="profile-card" style="text-align: center; margin-top: 50px;">
+                <h3>Conclusion</h3>
+                <p>The Sarah Discaya case represents a critical moment in Philippine politics, highlighting issues of corruption, accountability, and the need for transparent government processes. As citizens, especially young Filipinos, understanding these cases helps us become more informed participants in our democracy and advocates for good governance.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(26, 37, 47, 0.95)';
+            } else {
+                nav.style.background = '#1a252f';
+            }
+        });
+    </script>
+</body>
+</html>
